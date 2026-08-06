@@ -95,7 +95,7 @@ with col2:
 col1, col2 = st.columns(2)
 
 with col1:
-    country = st.text_input("Enter Your Country")
+    country = st.text_input("Enter Your Country").upper()
 
 with col2:
     gender = st.selectbox(
