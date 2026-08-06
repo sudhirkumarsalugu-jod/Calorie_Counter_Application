@@ -77,9 +77,6 @@ st.markdown("""
 
 api_key = os.getenv("GOOGLE_API_KEY")
 
-if api_key is None:
-    api_key= st.secrets["GOOGLE_API_KEY"]
-
 client = genai.Client(api_key = api_key) 
 
 col1, col2 = st.columns(2)
