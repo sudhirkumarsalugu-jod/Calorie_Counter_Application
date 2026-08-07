@@ -6,12 +6,13 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-
+#page configration
 st.set_page_config(
     layout= "centered",
     page_title= "Calorie Counter",
     page_icon= "🏥")
 
+#title markdown text
 st.markdown("""
 <h1 style="
     text-align:center;
@@ -23,6 +24,7 @@ st.markdown("""
 </h1>
 """, unsafe_allow_html=True)
 
+#css styling for the app
 st.markdown("""
 <style>
 
@@ -47,11 +49,31 @@ st.markdown("""
     font-weight:600;
 }
 
-/* All markdown labels */
+/* All markdown text */
 [data-testid="stMarkdownContainer"] p{
     color:red;
     font-weight:bold;
     font-size:20px;
+}
+[data-testid="stMarkdownContainer"] p,
+[data-testid="stMarkdownContainer"] li,
+[data-testid="stMarkdownContainer"] span,
+[data-testid="stMarkdownContainer"] strong,
+[data-testid="stMarkdownContainer"] h1,
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3,
+[data-testid="stMarkdownContainer"] h4,
+[data-testid="stMarkdownContainer"] h5,
+[data-testid="stMarkdownContainer"] h6{
+    color:red !important;
+    font-size:20px;
+}
+
+[data-testid="stMarkdownContainer"] strong,
+[data-testid="stMarkdownContainer"] h1,
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3{
+    font-weight:bold;
 }
 
 /* Text inside input boxes */
@@ -72,6 +94,7 @@ div[data-baseweb="select"]{
 </style>
 """, unsafe_allow_html=True)
 
+#subtitle markdown text
 st.markdown("""
 <p class="subtitle">BE YOUR BEST VERSION!</p>
 """, unsafe_allow_html=True)
@@ -140,7 +163,16 @@ mention nutrient value for every food option you give.Try to make it a little sh
 
 if st.button("Get Healthier"):
 
-    response = client.models.generate_content(
-    model = "gemini-3.5-flash",
-    contents = prompt )
-    st.write(response.text)
+    if wt <= 0 or ht <= 0:
+        st.error("Please enter a valid weight and height.")
+
+    else:
+        with st.spinner("Creating your personalized calorie plan..."):
+
+            response = client.models.generate_content(
+                model="gemini-3.5-flash",
+                contents=prompt
+            )
+
+        st.success("Your calorie plan is ready! 🎉")
+        st.markdown(response.text)
