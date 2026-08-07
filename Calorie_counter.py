@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 st.set_page_config(
-    layout= "centered"
+    layout= "centered",
     page_title= "Calorie Counter",
     page_icon= "🏥")
 
