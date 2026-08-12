@@ -1,0 +1,23 @@
+.stApp {
+background-color: var(--background-color);
+}
+
+.title {
+text-align: center;
+color: #606c38;
+font-size: 48px;
+font-weight: 800;
+}
+
+.subtitle {
+text-align: center;
+color: var(--text-color);
+font-size: 18px;
+font-weight: 600;
+}
+
+[data-testid="stMarkdownContainer"] p {
+color: red;
+font-weight: bold;
+font-size: 20px;
+}

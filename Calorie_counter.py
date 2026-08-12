@@ -3,6 +3,7 @@
 import streamlit as st
 import google.genai as genai
 import os 
+from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -12,87 +13,31 @@ st.set_page_config(
     page_title= "Calorie Counter",
     page_icon= "🏥")
 
+#CSS file loader function
+def load_css():
+    css_file = Path(__file__).parent / "style.css"
+
+    with open(css_file) as f:
+        st.markdown(
+            f"<style>{f.read()}</style>",
+            unsafe_allow_html=True
+        )
+
+
+load_css()
+#--------------------------------------------------------
 #title markdown text
 st.markdown("""
 <h1 style="
     text-align:center;
     color:#606c38;
-    font-size:48px;
+    font-size:55px;
     font-weight:800;
 ">
 🏥 Calorie Counter
 </h1>
 """, unsafe_allow_html=True)
 
-#css styling for the app
-st.markdown("""
-<style>
-
-/* App background */
-.stApp{
-    background-color: white;
-}
-
-/* Main title */
-.title{
-    text-align:center;
-    color:#606c38;
-    font-size:50px;
-    font-weight:600;
-}
-
-/* Subtitle */
-.subtitle{
-    text-align:center;
-    color:#444;
-    font-size:18px;
-    font-weight:600;
-}
-
-/* All markdown text */
-[data-testid="stMarkdownContainer"] p{
-    color:red;
-    font-weight:bold;
-    font-size:20px;
-}
-[data-testid="stMarkdownContainer"] p,
-[data-testid="stMarkdownContainer"] li,
-[data-testid="stMarkdownContainer"] span,
-[data-testid="stMarkdownContainer"] strong,
-[data-testid="stMarkdownContainer"] h1,
-[data-testid="stMarkdownContainer"] h2,
-[data-testid="stMarkdownContainer"] h3,
-[data-testid="stMarkdownContainer"] h4,
-[data-testid="stMarkdownContainer"] h5,
-[data-testid="stMarkdownContainer"] h6{
-    color:red !important;
-    font-size:20px;
-}
-
-[data-testid="stMarkdownContainer"] strong,
-[data-testid="stMarkdownContainer"] h1,
-[data-testid="stMarkdownContainer"] h2,
-[data-testid="stMarkdownContainer"] h3{
-    font-weight:bold;
-}
-
-/* Text inside input boxes */
-div[data-baseweb="input"] input{
-    font-weight:bold;
-}
-
-/* Number input text */
-input{
-    font-weight:bold;
-}
-
-/* Selectbox text */
-div[data-baseweb="select"]{
-    font-weight:bold;
-}
-
-</style>
-""", unsafe_allow_html=True)
 
 #subtitle markdown text
 st.markdown("""
