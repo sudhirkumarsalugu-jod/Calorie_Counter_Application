@@ -21,3 +21,50 @@ color: red;
 font-weight: bold;
 font-size: 20px;
 }
+
+/* Home page buttons */
+.stButton {
+    margin-bottom: 30px;
+}
+
+.stButton > button {
+    height: 70px;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+#bmi styling and formatting
+.bmi-box {
+    background-color:var(--background-color);
+    border: 2px solid color(white);
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 20px;
+    text-align: centered;
+}
+
+/* BMI heading */
+.bmi-title {
+    color: #606c38;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* BMI number */
+.bmi-value {
+    color: var(--text-color);
+    font-size: 45px;
+    font-weight: 800;
+    text-align: center;
+    margin: 5px 0;
+}
+
+/* BMI category */
+.bmi-category {
+    color:red;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
